@@ -1,0 +1,36 @@
+.about-me {
+    @include container;
+    margin-bottom: 5em;
+    margin-top: 5em;
+}
+
+@supports (display:grid) {
+    .about-me{
+        display:grid;
+        grid-template-columns: [port-start] minmax(6em, 1fr) [name-start] minmax(6em, 1fr) [img-end] 2fr [port-end];
+    }
+
+    .about-img {
+        grid-column: port-start / img-end;
+        grid-row: 1/2;
+        border-radius: 50%;
+        margin-bottom: 2em;
+        max-width: 65%;
+    }
+
+    .about-title{
+        grid-column: name / port;
+        grid-row: 1/2;
+        align-self: end;
+        margin:.5em;
+    }
+
+    .about-subtitle,
+    .about-text {
+        grid-column: port/port;
+    }
+
+    .about-subtitle {
+        margin-top: 0.5em 0;
+    }
+}

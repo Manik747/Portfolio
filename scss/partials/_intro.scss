@@ -1,0 +1,47 @@
+.intro {
+    display: flex;
+    color: $white;
+
+    h2{
+        color: $white;
+
+        &::after {
+            content:'';
+            width: 40%;
+            height: 2px;
+            background: rgba($white, .5);
+            display: block;
+            margin: 1em auto 0;
+        }
+    }
+
+    @supports (display: grid) {
+        display: grid;
+        grid-template-columns: minmax(2em, 1fr) minmax(auto, 30em) minmax(2em, 1fr);
+    }
+
+}
+
+.intro-middle {
+    background: $dark-blue;
+    padding: 3em;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-height: 400 px;
+}
+
+.intro-left img{
+    object-fit:cover;
+    min-height: 100%;
+    min-width: 100%;
+    display: block;
+}
+
+.intro-right img {
+    object-fit:cover;
+    min-height: 100%;
+    min-width: 100%;
+    display: block;
+}

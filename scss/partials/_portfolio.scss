@@ -1,0 +1,196 @@
+.portfolio {
+    text-align: center;
+    background: $accent;
+    padding: 4em 0;
+
+    h1{
+        color: $white;
+    }
+}
+
+.portfolio-items {
+    @include container($max-width: 75em);
+}
+
+.portfolio-item {
+    position:relative;
+    overflow:hidden;
+    padding: 0%;
+    margin: 0%;
+
+    img{
+        display: cover;
+    }
+
+    figcaption {
+        position: absolute;
+        top:100%;
+        bottom:0;
+        right:0;
+        left:0;
+        background: rgba($dark-blue,.5);
+        color: white;
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        transition: top ease-in-out 250ms;
+    
+    }
+    &:hover figcaption,
+    &:focus figcaption {
+        top:0;
+    }
+}
+.portfolio-title {
+    color: white;
+    font-size: 1 rem;
+    margin-bottom: auto;
+
+    .featured & {
+        font-size: 2.5rem;
+    }
+}
+
+.portfolio-desc{
+    display: none;
+
+    .featured &{
+        display: block;
+    }
+}
+
+.portfolio-link{
+    color:white;
+    font-weight: $fw-b;
+    font-size: 1.1rem;
+    text-decoration: none;
+    border-bottom: 2px solid white;
+    align-self: flex-start;
+}
+
+@supports (display: grid) {
+    .portfolio-items {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 5px;
+
+    @include mq {
+        grid-template-columns:repeat(4,1fr)
+    }
+
+    }
+    .portfolio-item.featured {
+        grid-column: 1 / span 2;
+        grid-row: 1 / span 2;
+    }
+}
+
+.portfolio-modal {
+    position: fixed;
+    z-index:10;
+    top: 2em;
+    bottom: 2em;
+    left: 2em;
+    right: 2em;
+    background: white;
+    box-shadow: 0 0 0 3em rgba(black, .75);
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    display: none;
+
+    &.is-open{
+        display: block;
+    }
+}
+
+.modal-close{
+    background: white;
+    border:none;
+    position: fixed;
+    right: 1em;
+    top: 1em;
+    width: 2.75em;
+    height: 2.75em;
+    border-radius: 50%;
+    box-shadow: 0 0 0 5px rgba(black, 0.5);
+    padding:4px 0 0;   
+}
+
+.portfolio-header {
+    text-align: left;
+    padding: 4em 0;
+    margin-bottom:2 em;
+}
+
+.portfolio-header:nth-of-type(1){
+    background-image: url(../img/jet.jpg);
+    background-size: cover;
+    background-position: center;
+
+    img{
+        padding: 1em;
+    }
+
+}
+
+.portfolio-title-box{
+    background: rgba($accent, .75);
+    padding: 3em 1em 3em;
+    color:white;
+    width:70%;
+}
+
+.portfolio-title {
+    font-size: 0.75 rem;
+    display: inline-block;
+
+    &::after{
+        content: '';
+        display: block;
+        height: 1px;
+        margin: 1em 0;
+        background:white;
+        width: 100%;
+    }
+}
+
+.portfolio-subtitle{
+    font-size: 0.5rem;
+}
+
+.portfolio-content {
+    text-align: left;
+    width: 90%;
+    margin: 0 auto;
+    padding-bottom: 2em;
+}
+
+.portfolio-full-width{
+    width:100vw;
+    max-width: initial;
+    margin:0 calc(50% - 50vw);
+    height: 20vh;
+    object-fit: cover;
+}
+
+@include mq {
+    .portfolio-pull-left {
+        width:65%;
+        float: left;
+        margin-right: 0 em;
+        font-size: 0.4rem;
+    }
+
+    .portfolio-pull-right {
+        width:65%;
+        float: right;
+        margin-left: 0em;
+    }
+}
+
+.video{
+    width:100%;
+    box-sizing: border-box;
+    min-height: 400px; 
+}
